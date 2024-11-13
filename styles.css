@@ -1,0 +1,62 @@
+:root {
+    --background-surface: #EFEFEF;
+    --primaryColor: #7400b8;
+    --secondaryColor: #6930c3;
+    --color3: #5e60ce;
+    --color4: #5390d9;
+    --color5: #4ea8de;
+    --color6: #48bfe3;
+    --color7: #56cfe1;
+    --color8: #64dfdf;
+    --color9: #72efdd;
+    --color10: #80ffdb;
+    --income: #06d6a0;
+    --expense: #ef476f;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+aside {
+    width: 60px; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .navlink {
+    color: #171717; 
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: color 0.3s ease;
+  }
+  
+  .navlink:hover {
+    color: #0a0a0a; 
+  }
+  
+  nav i {
+    color: inherit;
+    width: 24px;
+    height: 24px;
+  }
