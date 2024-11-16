@@ -36,28 +36,54 @@
 
     <main></main>
 
+    <!-- Component Templates -->
+
     <template id="dashboard-page-template">
       <section>
-        <p></p>
+        <h1>Dashboard</h1>
+        <article id="card-container"></article>
+        <article id="details-container">
+          <article id="expense-breakdown-container"></article>
+          <article id="recent-transactions-container"></article>
+        </article>
       </section>
     </template>
 
     <template id="income-page-template">
-      <section>
-        <p></p>
-      </section>
+      <section></section>
     </template>
 
     <template id="expenses-page-template">
-      <section>
-        <p></p>
-      </section>
+      <section></section>
     </template>
 
     <template id="investment-page-template">
-      <section>
-        <p></p>
-      </section>
+      <section></section>
+    </template>
+
+    <template id="dashboard-card-template">
+      <article class="card">
+        <header class="title"></header>
+        <p class="value" role="text"></p>
+        <p class="change" role="text"></p>
+      </article>
+    </template>
+
+    <template id="expense-breakdown-template">
+      <article class="expense-breakdown">
+        <h2>Expense Breakdown</h2>
+        <div class="chart-container"></div>
+      </article>
+    </template>
+
+    <template id="recent-transactions-template">
+      <article>
+        <h2>Recent transactions</h2>
+        <p class="transaction-summary" role="text">
+          You made 5 transactions this month
+        </p>
+        <ul class="transaction-list" role="list"></ul>
+      </article>
     </template>
   </body>
 </html>

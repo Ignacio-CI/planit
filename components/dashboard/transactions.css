@@ -1,0 +1,26 @@
+
+.transaction-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .transaction-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .transaction-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-list .description {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .transaction-list .amount {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }

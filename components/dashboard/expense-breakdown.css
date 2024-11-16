@@ -1,0 +1,21 @@
+
+.expense-breakdown,
+.recent-transactions {
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.expense-breakdown h2,
+.recent-transactions h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.chart-container {
+  width: 100%;
+  height: 200px;
+}
