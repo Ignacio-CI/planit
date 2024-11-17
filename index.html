@@ -1,89 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
 
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-    <script src="app.js" type="module" defer></script>
-    <title>PlanIt</title>
-  </head>
-  <body>
-    <aside>
-      <nav>
-        <a href="/" class="navlink" id="dashboard-link">
-          <i data-lucide="layout-dashboard"></i>
-        </a>
-        <a href="/income" class="navlink" id="income-link">
-          <i data-lucide="hand-coins"></i>
-        </a>
-        <a href="/expenses" class="navlink" id="expenses-link">
-          <i data-lucide="coins"></i>
-        </a>
-        <a href="/investment" class="navlink" id="investment-link">
-          <i data-lucide="landmark"></i>
-        </a>
-      </nav>
-    </aside>
+        <script src="app.js" type="module" defer></script>
+        <title>PlanIt</title>
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <a href="/" class="navlink" id="dashboard-link">
+                    <i data-lucide="layout-dashboard"></i>
+                </a>
+                <a href="/income" class="navlink" id="income-link">
+                    <i data-lucide="hand-coins"></i>
+                </a>
+                <a href="/expenses" class="navlink" id="expenses-link">
+                    <i data-lucide="coins"></i>
+                </a>
+                <a href="/investment" class="navlink" id="investment-link">
+                    <i data-lucide="landmark"></i>
+                </a>
+            </nav>
+        </aside>
 
-    <main></main>
+        <main></main>
 
-    <!-- Component Templates -->
+        <dialog class="transaction-dialog" id="dialog">
+            <form id="transaction-form" method="dialog">
+                <header>
+                    <h2>Add Transaction</h2>
+                </header>
+                <label for="description">Description:</label>
+                <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    required
+                />
 
-    <template id="dashboard-page-template">
-      <section>
-        <h1>Dashboard</h1>
-        <article id="card-container"></article>
-        <article id="details-container">
-          <article id="expense-breakdown-container"></article>
-          <article id="recent-transactions-container"></article>
-        </article>
-      </section>
-    </template>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="Food">Food</option>
+                    <option value="Housing">Housing</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Freelancing">Freelancing</option>
+                </select>
 
-    <template id="income-page-template">
-      <section></section>
-    </template>
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required />
 
-    <template id="expenses-page-template">
-      <section></section>
-    </template>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required />
 
-    <template id="investment-page-template">
-      <section></section>
-    </template>
+                <button type="submit">Add Transaction</button>
+            </form>
+            <button id="close-dialog-btn" type="reset">Close</button>
+        </dialog>
 
-    <template id="dashboard-card-template">
-      <article class="card">
-        <header class="title"></header>
-        <p class="value" role="text"></p>
-        <p class="change" role="text"></p>
-      </article>
-    </template>
+        <!-- Component Templates -->
 
-    <template id="expense-breakdown-template">
-      <article class="expense-breakdown">
-        <h2>Expense Breakdown</h2>
-        <div class="chart-container"></div>
-      </article>
-    </template>
+        <template id="dashboard-page-template">
+            <section>
+                <h1>Dashboard</h1>
+                <article id="card-container"></article>
+                <article id="details-container">
+                    <article id="expense-breakdown-container"></article>
+                    <article id="recent-transactions-container"></article>
+                </article>
+                <menu>
+                    <button id="add-transaction-btn">Add Transaction</button>
+                </menu>
+            </section>
+        </template>
 
-    <template id="recent-transactions-template">
-      <article>
-        <h2>Recent transactions</h2>
-        <p class="transaction-summary" role="text">
-          You made 5 transactions this month
-        </p>
-        <ul class="transaction-list" role="list"></ul>
-      </article>
-    </template>
-  </body>
+        <template id="income-page-template">
+            <section></section>
+        </template>
+
+        <template id="expenses-page-template">
+            <section></section>
+        </template>
+
+        <template id="investment-page-template">
+            <section></section>
+        </template>
+
+        <template id="dashboard-card-template">
+            <article class="card">
+                <header class="title"></header>
+                <p class="value" role="text"></p>
+                <p class="change" role="text"></p>
+            </article>
+        </template>
+
+        <template id="expense-breakdown-template">
+            <article class="expense-breakdown">
+                <h2>Expense Breakdown</h2>
+                <div class="chart-container"></div>
+            </article>
+        </template>
+
+        <template id="recent-transactions-template">
+            <article>
+                <h2>Recent transactions</h2>
+                <p class="transaction-summary" role="text">
+                    You made 5 transactions this month
+                </p>
+                <ul class="transaction-list" role="list"></ul>
+            </article>
+        </template>
+    </body>
 </html>
