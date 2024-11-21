@@ -64,7 +64,9 @@
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date" required />
 
-                <button type="submit">Add Transaction</button>
+                <button type="submit" id="submit-add-transaction">
+                    Add Transaction
+                </button>
             </form>
             <button id="close-dialog-btn" type="reset">Close</button>
         </dialog>
@@ -97,7 +99,7 @@
             <section></section>
         </template>
 
-        <template id="dashboard-card-template">
+        <template id="simple-card-template">
             <article class="card">
                 <header class="title"></header>
                 <p class="value" role="text"></p>
