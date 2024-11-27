@@ -1,0 +1,63 @@
+[
+    {
+        "summary": [
+            {
+                "title": "Income",
+                "total_amount": 7500 
+            },
+            {
+                "title": "Expenses",
+                "total_amount": 4200 
+            },
+            {
+                "title": "Investments",
+                "total_amount": 2500 
+            }
+        ],
+        "transactions": [
+            {
+                "id": "t1",
+                "description": "Monthly Rent",
+                "category": "housing",
+                "amount": 1500,
+                "date": "2024-11-01"
+            },
+            {
+                "id": "t2",
+                "description": "Groceries",
+                "category": "food",
+                "amount": 400,
+                "date": "2024-11-05"
+            },
+            {
+                "id": "t3",
+                "description": "Public Transport Pass",
+                "category": "transportation",
+                "amount": 120,
+                "date": "2024-11-08"
+            }
+        ],
+        "expensesDetails": {
+            "housing": 1500,
+            "food": 400,
+            "transportation": 120,
+            "utilities": 200,
+            "entertainment": 60,
+            "other": 1920
+        },
+        "incomeDetails": {
+            "salary": 5000,
+            "freelancing": 1500,
+            "investments": 1000,
+            "other": 0
+        },
+        "investmentsDetails": {
+            "stocks": 1000,
+            "crypto": 500,
+            "bonds": 0,
+            "savings": 800,
+            "realEstate": 200,
+            "other": 0
+        }
+    }
+]

@@ -17,17 +17,60 @@ export class DashboardPage extends HTMLElement {
         ).content;
         this.root.appendChild(template.cloneNode(true));
 
+        window.addEventListener('datachange', () => {
+            console.log('datachange event received');
+            this.render();
+        });
         this.render();
     }
 
     render() {
-        const cardContainer = this.root.getElementById('card-container');
-        const card = document.createElement('simple-card');
-        card.setAttribute('title', 'Income');
-        card.setAttribute('value', '$1200');
-        card.setAttribute('change', '+2.5% from last month');
+        const cardContainer = this.root.querySelector('#card-container');
+        const expenseBdContainer = this.root.querySelector(
+            '#expense-breakdown-container'
+        );
+        const recentTxnsContainer = this.root.querySelector(
+            '#recent-transactions-container'
+        );
 
-        cardContainer.appendChild(card);
+        if (!app.store.data || app.store.data.length === 0) {
+            cardContainer.innerHTML = '<p>LOADING...</p>';
+            return;
+        } else {
+            cardContainer.innerHTML = '';
+
+            for (let status of app.store.data[0].summary) {
+                const card = document.createElement('simple-card');
+                card.setAttribute('title', status.title);
+                card.setAttribute('value', `$${status.total_amount}`);
+                card.setAttribute('change', '+2.5% from last month');
+                cardContainer.appendChild(card);
+            }
+
+            const expenseBreakdown =
+                document.createElement('expense-breakdown');
+            expenseBdContainer.appendChild(expenseBreakdown);
+
+            const recentTransactions = document.createElement(
+                'recent-transactions'
+            );
+            const txns = app.store.data[0].transactions;
+            recentTransactions.dataset.transactions = JSON.stringify(txns);
+            recentTxnsContainer.appendChild(recentTransactions);
+
+            const txnDialog = document.querySelector('.transaction-dialog');
+            const txnDialogCloseBtn =
+                document.querySelector('#close-dialog-btn');
+            const addTxnBtn = this.root.querySelector('#add-transaction-btn');
+
+            addTxnBtn.addEventListener('click', () => {
+                txnDialog.showModal();
+            });
+
+            txnDialogCloseBtn.addEventListener('click', () => {
+                txnDialog.close();
+            });
+        }
     }
 }
 

@@ -1,26 +1,44 @@
+.recent-transactions {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
 
 .transaction-list {
-    list-style: none;
     padding: 0;
   }
   
-  .transaction-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .transaction-list li:last-child {
-    border-bottom: none;
-  }
-  
-  .transaction-list .description {
-    font-size: 0.9rem;
-    color: #333;
-  }
-  
-  .transaction-list .amount {
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
+.transaction-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.transaction-list .txn-description, .txn-category, .txn-date {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.transaction-list .txn-amount {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.25rem;
+}
+
+li:nth-child(odd) {
+  background-color: #f1f5f9;
+}
+
+span {
+  flex: 1;
+  padding-left: 4px;
+}

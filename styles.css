@@ -125,3 +125,30 @@ aside {
     width: 24px;
     height: 24px;
   }
+
+  dialog {
+    border-radius: 8px;
+    border: none;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  #transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem;
+  }
+
+  #transaction-form header {
+    margin-bottom: 0.25rem;
+  }
+
+  #transaction-form menu {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+  }
+
+  #transaction-form #close-dialog-btn {
+    flex: 0.8;
+  }
