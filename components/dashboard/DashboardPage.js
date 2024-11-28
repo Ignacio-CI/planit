@@ -1,4 +1,4 @@
-import { loadCSS } from '../../helpers/index.js';
+import { loadCSS, generateId } from '../../helpers/index.js';
 
 export class DashboardPage extends HTMLElement {
     constructor() {
@@ -16,6 +16,35 @@ export class DashboardPage extends HTMLElement {
             'dashboard-page-template'
         ).content;
         this.root.appendChild(template.cloneNode(true));
+
+        const txnDialog = document.querySelector('.transaction-dialog');
+        const txnForm = document.querySelector('#transaction-form');
+        const addTxnBtn = this.root.querySelector('#add-transaction-btn');
+        const txnDialogCloseBtn = document.querySelector('#close-dialog-btn');
+
+        addTxnBtn.addEventListener('click', () => txnDialog.showModal());
+        txnDialogCloseBtn.addEventListener('click', () => txnDialog.close());
+
+        txnForm.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(txnForm);
+            const newTransaction = {
+                id: generateId(),
+                description: formData.get('description'),
+                category: formData.get('category'),
+                amount: formData.get('amount'),
+                date: formData.get('date'),
+            };
+
+            const currentData = app.store.data;
+            currentData[0].transactions.push(newTransaction);
+            app.store.data = currentData;
+            localStorage.setItem('financialData', JSON.stringify(currentData));
+
+            txnForm.reset();
+            txnDialog.close();
+        });
 
         window.addEventListener('datachange', () => {
             console.log('datachange event received');
@@ -38,6 +67,8 @@ export class DashboardPage extends HTMLElement {
             return;
         } else {
             cardContainer.innerHTML = '';
+            expenseBdContainer.innerHTML = '';
+            recentTxnsContainer.innerHTML = '';
 
             for (let status of app.store.data[0].summary) {
                 const card = document.createElement('simple-card');
@@ -57,19 +88,6 @@ export class DashboardPage extends HTMLElement {
             const txns = app.store.data[0].transactions;
             recentTransactions.dataset.transactions = JSON.stringify(txns);
             recentTxnsContainer.appendChild(recentTransactions);
-
-            const txnDialog = document.querySelector('.transaction-dialog');
-            const txnDialogCloseBtn =
-                document.querySelector('#close-dialog-btn');
-            const addTxnBtn = this.root.querySelector('#add-transaction-btn');
-
-            addTxnBtn.addEventListener('click', () => {
-                txnDialog.showModal();
-            });
-
-            txnDialogCloseBtn.addEventListener('click', () => {
-                txnDialog.close();
-            });
         }
     }
 }
